@@ -5,3 +5,8 @@ if ! docker info >/dev/null 2>&1; then
 else
     echo "Docker running.."
 fi
+
+mkdir -p ../projects
+cd ../projects
+git clone https://github.com/hundehausen/tipxmr.git
+git clone https://github.com/hundehausen/tipxmr-backend.git

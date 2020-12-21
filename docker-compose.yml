@@ -1,18 +1,17 @@
-version: 3
-
+version: "3.9"
 services:
   tipxmr-frontend:
-    build: ./projects/tipxmr
+    build: ./projects/tipxmr/
     expose:
-      - 8080
+      - "8080"
     ports:
-      - 80:8080
+      - "80:8080"
     command: npm start
 
   tipxmr-backend:
-    build: ./projects/tipxmr-backend
+    build: ./projects/tipxmr-backend/
     expose:
-      - 3000
+      - "3000"
     ports:
-      - 3000:3000
+      - "3000:3000"
     command: node server.js
