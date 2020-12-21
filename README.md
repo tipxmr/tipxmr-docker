@@ -1,0 +1,2 @@
+# TipDocker
+Dockerize TipXMR
