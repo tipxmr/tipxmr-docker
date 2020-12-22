@@ -20,9 +20,25 @@ fi
 
 mkdir -p ../projects
 cd ../projects
-git clone https://github.com/hundehausen/tipxmr.git
-git clone https://github.com/hundehausen/tipxmr-backend.git
-cd tipxmr
-git checkout dockerize
-cd ../tipxmr-backend
-git checkout dockerize
+if [ ! -d "tipxmr-frontend" ] ; then
+    git clone https://github.com/hundehausen/tipxmr.git tipxmr-frontend
+    cd tipxmr-frontend
+    git checkout dockerize
+    cd ..
+else
+    cd tipxmr-frontend
+    git pull https://github.com/hundehausen/tipxmr.git
+    git checkout dockerize
+    cd ..
+fi
+if [ ! -d "tipxmr-backend" ] ; then
+    git clone https://github.com/hundehausen/tipxmr-backend.git
+    cd tipxmr-backend
+    git checkout dockerize
+    cd ..
+else
+    cd tipxmr-backend
+    git pull https://github.com/hundehausen/tipxmr-backend.git
+    git checkout dockerize
+    cd ..
+fi
