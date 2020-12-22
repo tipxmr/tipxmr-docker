@@ -13,32 +13,20 @@ else
     echo "Docker Compose running.."
 fi
 
-if ! git version >/dev/null 2>&1; then
-    echo "git is not installed.. sudo apt install -y git"
-    exit 1
-fi
-
 mkdir -p ../projects
 cd ../projects
 if [ ! -d "tipxmr-frontend" ] ; then
-    git clone https://github.com/hundehausen/tipxmr.git tipxmr-frontend
-    cd tipxmr-frontend
-    git checkout dockerize
-    cd ..
+    git clone -b dockerize https://github.com/hundehausen/tipxmr.git tipxmr-frontend
 else
     cd tipxmr-frontend
-    git pull https://github.com/hundehausen/tipxmr.git
-    git checkout dockerize
+    git pull git pull origin dockerize
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
-    git clone https://github.com/hundehausen/tipxmr-backend.git
-    cd tipxmr-backend
-    git checkout dockerize
-    cd ..
+    git clone -b dockerize https://github.com/hundehausen/tipxmr-backend.git
 else
     cd tipxmr-backend
-    git pull https://github.com/hundehausen/tipxmr-backend.git
-    git checkout dockerize
+    git pull origin git clone -b dockerize 
     cd ..
 fi
+echo "Run docker-compose up"

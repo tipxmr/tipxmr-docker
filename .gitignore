@@ -1,3 +1,5 @@
 .DS_Store
-projects/
+projects/tipxmr-frontend
+projects/tipxmr-backend
+projects/monero-node/bitmonero/stagenet
 .env

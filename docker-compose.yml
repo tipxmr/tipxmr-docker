@@ -25,3 +25,16 @@ services:
        - ./projects/tipxmr-backend:/usr/src/app
        - /usr/src/app/node_modules
     command: node server.js
+
+  monero-node:
+    container_name: "monero-node"
+    build: 
+      context: ./projects/monero-node
+    expose: 
+      - "38080"
+      - "38081"
+    ports: 
+    - "38080:38080"
+    - "38081:38081"
+    volumes:
+      - ./projects/monero-node/bitmonero:/home/monero/.bitmonero
