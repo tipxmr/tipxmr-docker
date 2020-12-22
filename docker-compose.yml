@@ -1,17 +1,27 @@
 version: "3.9"
 services:
   tipxmr-frontend:
-    build: ./projects/tipxmr-frontend
+    container_name: "tipxmr-frontend"
+    build: 
+      context: ./projects/tipxmr-frontend
     expose:
       - "8080"
     ports:
       - "8080:8080"
+    volumes:
+       - ./projects/tipxmr-frontend:/usr/src/app
+       - /usr/src/app/node_modules
     command: npm start
 
   tipxmr-backend:
-    build: ./projects/tipxmr-backend
+    container_name: "tipxmr-backend"
+    build: 
+      context: ./projects/tipxmr-backend
     expose:
       - "3000"
     ports:
       - "3000:3000"
+    volumes:
+       - ./projects/tipxmr-backend:/usr/src/app
+       - /usr/src/app/node_modules
     command: node server.js
