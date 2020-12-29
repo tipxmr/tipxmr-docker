@@ -18,7 +18,7 @@ RUN curl https://dlsrc.getmonero.org/cli/monero-linux-x64-v$MONERO_VERSION.tar.b
 # get the banlist - still desireable to keep it in a while longer.
 RUN curl https://gui.xmr.pm/files/block.txt > /root/block.txt
 
-  
+
 FROM ubuntu:18.04
 
 RUN useradd -ms /bin/bash monero && mkdir -p /home/monero/.bitmonero && chown -R monero:monero /home/monero/.bitmonero
@@ -27,13 +27,14 @@ WORKDIR /home/monero
 
 COPY --chown=monero:monero --from=build /root/monerod /home/monero/monerod
 COPY --chown=monero:monero --from=build /root/block.txt /home/monero/block.txt
+COPY --chown=monero:monero --from=build /root/stagenet.conf /home/monero/stagenet.conf
 
 
 # blockchain location
 VOLUME /home/monero/.bitmonero
 
-EXPOSE 38080 38081
+EXPOSE 38080 38083
 
 
 ENTRYPOINT ["./monerod"]
-CMD ["--config-file=stagenet.conf"]
+CMD ["--non-interactive", "--config-file=/home/monero/.bitmonero/stagenet.conf"]

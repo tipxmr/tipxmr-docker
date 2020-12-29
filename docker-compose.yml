@@ -2,39 +2,42 @@ version: "3.9"
 services:
   tipxmr-frontend:
     container_name: "tipxmr-frontend"
-    build: 
+    build:
       context: ./projects/tipxmr-frontend
     expose:
       - "8080"
     ports:
       - "8080:8080"
     volumes:
-       - ./projects/tipxmr-frontend:/usr/src/app
-       - /usr/src/app/node_modules
+      - ./projects/tipxmr-frontend:/usr/src/app
+      - /usr/src/app/node_modules
     command: npm start
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
-    build: 
+    build:
       context: ./projects/tipxmr-backend
     expose:
       - "3000"
     ports:
       - "3000:3000"
     volumes:
-       - ./projects/tipxmr-backend:/usr/src/app
-       - /usr/src/app/node_modules
+      - ./projects/tipxmr-backend:/usr/src/app
+      - /usr/src/app/node_modules
     command: node server.js
 
   monero-node:
     container_name: "monero-node"
-    build: 
+    build:
       context: ./projects/monero-node
-    expose: 
-      - "38080"
-      - "38081"
-    ports: 
-    - "38080:38080"
-    - "38081:38081"
+    command: --non-interactive --config-file /home/monero/.bitmonero/stagenet.conf
+    ports:
+      - "38080:38080"
+      - "38081:38081"
     volumes:
       - ./projects/monero-node/bitmonero:/home/monero/.bitmonero
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"
