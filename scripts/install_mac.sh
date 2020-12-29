@@ -29,4 +29,5 @@ else
     git pull origin git clone -b dockerize 
     cd ..
 fi
+wget -O ../projects/monero-node/bitmonero/block_tor.txt https://gui.xmr.pm/files/block_tor.txt
 echo "Run docker-compose up"
