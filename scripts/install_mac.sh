@@ -17,17 +17,19 @@ mkdir -p ../projects
 cd ../projects
 if [ ! -d "tipxmr-frontend" ] ; then
     git clone -b dockerize https://github.com/hundehausen/tipxmr.git tipxmr-frontend
+    npm install
 else
     cd tipxmr-frontend
-    git pull git pull origin dockerize
+    git pull origin dockerize
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
     git clone -b dockerize https://github.com/hundehausen/tipxmr-backend.git
+    npm install
 else
     cd tipxmr-backend
-    git pull origin git clone -b dockerize 
+    git pull origin dockerize 
     cd ..
 fi
 wget -O ../projects/monero-node/bitmonero/block_tor.txt https://gui.xmr.pm/files/block_tor.txt
-echo "Run docker-compose up"
+echo "Run cd .. && docker-compose up"
