@@ -22,7 +22,7 @@ services:
       - "3000:3000"
     volumes:
       - ./projects/tipxmr-backend:/app
-    command: npm start
+    command: npm run watch
 
   monero-node:
     container_name: "monero-node"
