@@ -23,6 +23,7 @@ if [ ! -d "tipxmr-frontend" ] ; then
 else
     cd tipxmr-frontend
     git pull
+    npm install
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
@@ -33,6 +34,7 @@ if [ ! -d "tipxmr-backend" ] ; then
 else
     cd tipxmr-backend
     git pull
+    npm install
     cd ..
 fi
 #wget -O ../projects/monero-node/bitmonero/block_tor.txt https://gui.xmr.pm/files/block_tor.txt
