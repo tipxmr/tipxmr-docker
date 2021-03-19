@@ -17,17 +17,19 @@ mkdir -p ../projects
 cd ../projects
 if [ ! -d "tipxmr-frontend" ] ; then
     git clone https://github.com/hundehausen/tipxmr.git tipxmr-frontend
+    git checkout feature/127-install_node_modules_into_container
 else
     cd tipxmr-frontend
+    git checkout feature/127-install_node_modules_into_container
     git pull
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
     git clone https://github.com/hundehausen/tipxmr-backend.git
-    cd tipxmr-backend
-    cd ..
+    git checkout feature/127-install_node_modules_into_container
 else
     cd tipxmr-backend
+    git checkout feature/127-install_node_modules_into_container
     git pull
     cd ..
 fi
