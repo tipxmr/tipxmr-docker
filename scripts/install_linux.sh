@@ -32,6 +32,8 @@ else
     cd ..
 fi
 cd ..
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose DOCKER_BUILDKIT
+export COMPOSE_DOCKER_CLI_BUILD=1 
+export DOCKER_BUILDKIT=1 
+docker-compose build
 
 echo "Run docker-compose up"
