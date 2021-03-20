@@ -24,6 +24,7 @@ else
 fi
 if [ ! -d "tipxmr-backend" ] ; then
     git clone https://github.com/hundehausen/tipxmr-backend.git
+    cp ./tipxmr-backend/.env.example ./tipxmr-backend/.env
 else
     cd tipxmr-backend
     git pull
