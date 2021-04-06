@@ -1,30 +1,30 @@
-version: "3.9"
+version: "3"
 services:
   tipxmr-frontend:
     container_name: "tipxmr-frontend"
-    build:
+    build: 
       context: ./projects/tipxmr-frontend
     expose:
       - "8080"
     ports:
       - "8080:8080"
-    volumes:
-      - ./projects/tipxmr-frontend:/usr/src/app
-      - /usr/src/app/node_modules
     command: npm start
+    volumes:
+      - ./projects/tipxmr-frontend:/usr/local/app
+      - exclude-fe:/usr/local/app/node_modules/
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
-    build:
+    build: 
       context: ./projects/tipxmr-backend
     expose:
       - "3000"
     ports:
       - "3000:3000"
+    command: npm run watch
     volumes:
-      - ./projects/tipxmr-backend:/usr/src/app
-      - /usr/src/app/node_modules
-    command: node server.js
+      - ./projects/tipxmr-backend:/usr/local/app
+      - exclude-be:/usr/local/app/node_modules/
 
   monero-node:
     container_name: "monero-node"
@@ -41,3 +41,6 @@ services:
       options:
         max-size: 10m
         max-file: "3"
+volumes: 
+  exclude-fe:
+  exclude-be:
