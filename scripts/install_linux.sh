@@ -16,14 +16,15 @@ fi
 mkdir -p ../projects
 cd ../projects
 if [ ! -d "tipxmr-frontend" ] ; then
-    git clone https://github.com/hundehausen/tipxmr.git tipxmr-frontend
+    git clone https://github.com/tipxmr/tipxmr-frontend.git
+    cp ./tipxmr-frontend/.env.example ./tipxmr-frontend/.env
 else
     cd tipxmr-frontend
     git pull
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
-    git clone https://github.com/hundehausen/tipxmr-backend.git
+    git clone https://github.com/tipxmr/tipxmr-backend.git
     cp ./tipxmr-backend/.env.example ./tipxmr-backend/.env
 else
     cd tipxmr-backend
@@ -31,8 +32,8 @@ else
     cd ..
 fi
 cd ..
-export COMPOSE_DOCKER_CLI_BUILD=1 
-export DOCKER_BUILDKIT=1 
-docker-compose build
+# export COMPOSE_DOCKER_CLI_BUILD=1 
+# export DOCKER_BUILDKIT=1 
+# docker-compose build
 
 echo "Run docker-compose up"
