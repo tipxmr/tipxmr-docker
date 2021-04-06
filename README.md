@@ -1,6 +1,6 @@
-# TipDocker
+# TipXMR Docker
 
-Dockerize TipXMR
+Dockerize TipXMR for development and production
 
 ## Installation
 
@@ -11,7 +11,7 @@ Dockerize TipXMR
 - docker-compose
 
 ```bash
-git clone https://github.com/hundehausen/TipDocker.git
+git clone https://github.com/tipxmr/tipxmr-docker.git
 cd scripts
 ./install_linux.sh
 docker-compose up
