@@ -11,8 +11,8 @@ Dockerize TipXMR for development and production
 - docker-compose
 
 ```bash
-git clone https://github.com/tipxmr/tipxmr-docker.git
-cd scripts
+git clone git@github.com:tipxmr/tipxmr-docker.git 
+cd tipxmr-docker/scripts
 ./install_linux.sh
 docker-compose up
 ```
