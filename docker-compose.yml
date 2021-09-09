@@ -4,14 +4,11 @@ services:
     container_name: "tipxmr-frontend"
     build: 
       context: ./projects/tipxmr-frontend
-    expose:
-      - "8080"
     ports:
       - "8080:8080"
-    command: npm start
     volumes:
-      - ./projects/tipxmr-frontend:/usr/app
-      - exclude-fe:/usr/app/node_modules/
+      - ./projects/tipxmr-frontend:/app
+      - exclude-fe:/app/node_modules
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
@@ -58,6 +55,7 @@ services:
       - POSTGRES_PASSWORD=tipxmr
 
   pgadmin:
+    container_name: "tipxmr-pgadmin"
     image: dpage/pgadmin4
     depends_on:
       - db
