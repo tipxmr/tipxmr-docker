@@ -18,17 +18,25 @@ cd ../projects
 if [ ! -d "tipxmr-frontend" ] ; then
     git clone https://github.com/tipxmr/tipxmr-frontend.git
     cp ./tipxmr-frontend/.env.example ./tipxmr-frontend/.env
+    cd tipxmr-frontend
+    npm install
+    cd ..
 else
     cd tipxmr-frontend
     git pull
+    npm install
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
     git clone https://github.com/tipxmr/tipxmr-backend.git
     cp ./tipxmr-backend/.env.example ./tipxmr-backend/.env
+    cd tipxmr-backend
+    npm install
+    cd ..
 else
     cd tipxmr-backend
     git pull
+    npm install
     cd ..
 fi
 cd ..
