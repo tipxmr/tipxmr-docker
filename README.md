@@ -18,3 +18,6 @@ docker-compose up
 ```
 
 Then open [http://localhost:8080](http://localhost:8080) in your browser.
+
+### Fixing the permission issue
+in case you run into a permission issue with docker, try the following command `sudo setfacl --modify user:$USER:rw /var/run/docker.sock`
