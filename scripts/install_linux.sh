@@ -16,7 +16,7 @@ fi
 mkdir -p ../projects
 cd ../projects
 if [ ! -d "tipxmr-frontend" ] ; then
-    git clone https://github.com/tipxmr/tipxmr-frontend.git
+    git clone git@github.com:tipxmr/tipxmr-frontend.git
     cp ./tipxmr-frontend/.env.example ./tipxmr-frontend/.env
     cd tipxmr-frontend
     npm install
@@ -28,7 +28,7 @@ else
     cd ..
 fi
 if [ ! -d "tipxmr-backend" ] ; then
-    git clone https://github.com/tipxmr/tipxmr-backend.git
+    git clone git@github.com:tipxmr/tipxmr-backend.git
     cp ./tipxmr-backend/.env.example ./tipxmr-backend/.env
     cd tipxmr-backend
     npm install
