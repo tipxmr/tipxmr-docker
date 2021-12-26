@@ -2,29 +2,29 @@ version: "3"
 services:
   tipxmr-frontend:
     container_name: "tipxmr-frontend"
-    build: 
+    build:
+      dockerfile: Dockerfile.dev
       context: ./projects/tipxmr-frontend
     ports:
       - "8080:8080"
     volumes:
       - ./projects/tipxmr-frontend:/app
       - exclude-fe:/app/node_modules
-    command: npm run start
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
-    build: 
+    build:
+      dockerfile: Dockerfile.dev
       context: ./projects/tipxmr-backend
     expose:
       - "3000"
     ports:
       - "3000:3000"
-    command: npm run watch
     volumes:
-      - ./projects/tipxmr-backend:/usr/app
-      - exclude-be:/usr/app/node_modules/
+      - ./projects/tipxmr-backend:/app
+      - exclude-be:/app/node_modules/
     depends_on: 
-      - "db"
+      - postgres
 
   monero-node:
     container_name: "monero-node"
@@ -43,9 +43,8 @@ services:
         max-size: 10m
         max-file: "3"
 
-  db:
+  postgres:
     container_name: "tipxmr-db"
-    hostname: postgres
     image: postgres:latest
     command: postgres -c stats_temp_directory=/tmp
     restart: unless-stopped
