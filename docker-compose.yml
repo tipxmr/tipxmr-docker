@@ -9,6 +9,8 @@ services:
     volumes:
       - ./projects/tipxmr-frontend:/app
       - exclude-fe:/app/node_modules
+    networks:
+      - tipxmr_network
     command: npm run start
 
   tipxmr-backend:
@@ -19,12 +21,15 @@ services:
       - "3000"
     ports:
       - "3000:3000"
-    command: npm run watch
     volumes:
       - ./projects/tipxmr-backend:/usr/app
       - exclude-be:/usr/app/node_modules/
+    networks:
+      - tipxmr_network
     depends_on: 
       - "db"
+    environment:
+      - DB_HOST=db
 
   monero-node:
     container_name: "monero-node"
@@ -37,6 +42,8 @@ services:
       - "38081:38081"
     volumes:
       - ./projects/monero-node/bitmonero:/home/monero/.bitmonero
+    networks:
+      - tipxmr_network
     logging:
       driver: "json-file"
       options:
@@ -56,6 +63,8 @@ services:
       - POSTGRES_DB=tipxmr
       - POSTGRES_USER=tipxmr
       - POSTGRES_PASSWORD=tipxmr
+    networks:
+      - tipxmr_network
 
   pgadmin:
     container_name: "tipxmr-pgadmin"
@@ -68,7 +77,13 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@tipxmr.live
       PGADMIN_DEFAULT_PASSWORD: tipxmr
     restart: unless-stopped
+    networks:
+      - tipxmr_network
 
 volumes: 
   exclude-fe:
   exclude-be:
+
+networks:
+  tipxmr_network: 
+    driver: bridge
