@@ -1,17 +1,17 @@
 version: "3"
 services:
-  tipxmr-frontend:
-    container_name: "tipxmr-frontend"
-    build: 
-      context: ./projects/tipxmr-frontend
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./projects/tipxmr-frontend:/app
-      - exclude-fe:/app/node_modules
-    networks:
-      - tipxmr_network
-    command: npm run start
+  # tipxmr-frontend:
+  #   container_name: "tipxmr-frontend"
+  #   build: 
+  #     context: ./projects/tipxmr-frontend
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./projects/tipxmr-frontend:/app
+  #     - exclude-fe:/app/node_modules
+  #   networks:
+  #     - tipxmr_network
+  #   command: npm run start
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
@@ -29,26 +29,26 @@ services:
     depends_on: 
       - "db"
     environment:
-      - DB_HOST=db
+      - DB_HOST=postgres
 
-  monero-node:
-    container_name: "monero-node"
-    platform: linux/amd64
-    build:
-      context: ./projects/monero-node
-    command: --non-interactive --config-file /home/monero/.bitmonero/stagenet.conf
-    ports:
-      - "38080:38080"
-      - "38081:38081"
-    volumes:
-      - ./projects/monero-node/bitmonero:/home/monero/.bitmonero
-    networks:
-      - tipxmr_network
-    logging:
-      driver: "json-file"
-      options:
-        max-size: 10m
-        max-file: "3"
+  # monero-node:
+  #   container_name: "monero-node"
+  #   platform: linux/amd64
+  #   build:
+  #     context: ./projects/monero-node
+  #   command: --non-interactive --config-file /home/monero/.bitmonero/stagenet.conf
+  #   ports:
+  #     - "38080:38080"
+  #     - "38081:38081"
+  #   volumes:
+  #     - ./projects/monero-node/bitmonero:/home/monero/.bitmonero
+  #   networks:
+  #     - tipxmr_network
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: 10m
+  #       max-file: "3"
 
   db:
     container_name: "tipxmr-db"
@@ -81,7 +81,7 @@ services:
       - tipxmr_network
 
 volumes: 
-  exclude-fe:
+  # exclude-fe:
   exclude-be:
 
 networks:
