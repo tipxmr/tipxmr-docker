@@ -6,10 +6,10 @@ services:
       context: ./projects/temporary-FE
     ports:
       - "8080:8080"
+      - "6006:6006"
     volumes:
       - ./projects/temporary-FE:/app
       - exclude-fe:/app/node_modules
-    command: npm run start
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
@@ -76,5 +76,5 @@ services:
       driver: none
 
 volumes: 
-  # exclude-fe:
+  exclude-fe:
   exclude-be:
