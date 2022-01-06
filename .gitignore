@@ -1,5 +1,6 @@
 .DS_Store
 projects/tipxmr-frontend
+projects/temporary-FE
 projects/tipxmr-backend
 projects/monero-node/bitmonero/stagenet
 projects/monero-node/bitmonero/block_tor.txt

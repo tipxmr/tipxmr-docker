@@ -1,20 +1,19 @@
 version: "3"
 services:
-  # tipxmr-frontend:
-  #   container_name: "tipxmr-frontend"
-  #   build: 
-  #     context: ./projects/tipxmr-frontend
-  #   ports:
-  #     - "8080:8080"
-  #   volumes:
-  #     - ./projects/tipxmr-frontend:/app
-  #     - exclude-fe:/app/node_modules
-  #   networks:
-  #     - tipxmr_network
-  #   command: npm run start
+  tipxmr-frontend:
+    container_name: "tipxmr-frontend"
+    build: 
+      context: ./projects/temporary-FE
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./projects/temporary-FE:/app
+      - exclude-fe:/app/node_modules
+    command: npm run start
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
+    platform: "linux/amd64"
     build: 
       context: ./projects/tipxmr-backend
     expose:
@@ -24,8 +23,6 @@ services:
     volumes:
       - ./projects/tipxmr-backend:/usr/app
       - exclude-be:/usr/app/node_modules/
-    # networks:
-    #   - tipxmr_network
     depends_on: 
       - "db"
     environment:
@@ -42,8 +39,6 @@ services:
   #     - "38081:38081"
   #   volumes:
   #     - ./projects/monero-node/bitmonero:/home/monero/.bitmonero
-  #   networks:
-  #     - tipxmr_network
   #   logging:
   #     driver: "json-file"
   #     options:
@@ -65,27 +60,21 @@ services:
       - POSTGRES_PASSWORD=tipxmr
     ports:
       - 5432:5432
-    # networks:
-    #   - tipxmr_network
 
-  # pgadmin:
-  #   container_name: "tipxmr-pgadmin"
-  #   image: dpage/pgadmin4
-  #   depends_on:
-  #     - db
-  #   ports:
-  #     - 5555:80
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: admin@tipxmr.live
-  #     PGADMIN_DEFAULT_PASSWORD: tipxmr
-  #   restart: unless-stopped
-    # networks:
-    #   - tipxmr_network
+  pgadmin:
+    container_name: "tipxmr-pgadmin"
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    ports:
+      - 5555:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@tipxmr.live
+      PGADMIN_DEFAULT_PASSWORD: tipxmr
+    restart: unless-stopped
+    logging:
+      driver: none
 
 volumes: 
   # exclude-fe:
   exclude-be:
-
-# networks:
-#   tipxmr_network: 
-#     driver: bridge
