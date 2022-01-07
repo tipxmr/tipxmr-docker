@@ -1,15 +1,14 @@
 version: "3"
 services:
-  tipxmr-frontend:
-    container_name: "tipxmr-frontend"
-    build: 
-      context: ./projects/temporary-FE
-    ports:
-      - "8080:8080"
-      - "6006:6006"
-    volumes:
-      - ./projects/temporary-FE:/app
-      - exclude-fe:/app/node_modules
+  # tipxmr-frontend:
+  #   container_name: "tipxmr-frontend"
+  #   build: 
+  #     context: ./projects/temporary-FE
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./projects/temporary-FE:/app
+  #     - exclude-fe:/app/node_modules
 
   tipxmr-backend:
     container_name: "tipxmr-backend"
