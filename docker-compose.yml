@@ -10,22 +10,22 @@ services:
   #     - ./projects/temporary-FE:/app
   #     - exclude-fe:/app/node_modules
 
-  tipxmr-backend:
-    container_name: "tipxmr-backend"
-    platform: "linux/amd64"
-    build: 
-      context: ./projects/tipxmr-backend
-    expose:
-      - "3000"
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./projects/tipxmr-backend:/usr/app
-      - exclude-be:/usr/app/node_modules/
-    depends_on: 
-      - "db"
-    environment:
-      - DB_HOST=postgres
+  # tipxmr-backend:
+  #   container_name: "tipxmr-backend"
+  #   platform: "linux/amd64"
+  #   build: 
+  #     context: ./projects/tipxmr-backend
+  #   expose:
+  #     - "3000"
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./projects/tipxmr-backend:/usr/app
+  #     - exclude-be:/usr/app/node_modules/
+  #   depends_on: 
+  #     - "db"
+  #   environment:
+  #     - DB_HOST=postgres
 
   # monero-node:
   #   container_name: "monero-node"
@@ -74,6 +74,6 @@ services:
     logging:
       driver: none
 
-volumes: 
-  exclude-fe:
-  exclude-be:
+# volumes: 
+#   exclude-fe:
+#   exclude-be:
